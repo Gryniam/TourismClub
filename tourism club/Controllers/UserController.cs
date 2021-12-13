@@ -37,6 +37,7 @@ namespace tourism_club.Controllers
             User user = new User();
             user.Name = Name;
             user.password = password;
+            ViewBag.Reg = true;
             List<User> users = _users.users.ToList();
             if (CorrectDatas(users, Name, password))
             {
@@ -92,6 +93,7 @@ namespace tourism_club.Controllers
                     _roles.addRole(roles);
 
                     await Authenticate(user.Name);
+                   
                     return RedirectToAction("Index", "Home");
                 }
                 else

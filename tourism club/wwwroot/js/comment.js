@@ -13,7 +13,8 @@ function addComent() {
     com.appendChild(text);
 comment.querySelector('fieldset').appendChild(com);
     }
-    
+    let request = new XMLHttpRequest();
+    request.open("POST", ~/Home/Location, true);
 }
 function textArea(){
     document.comment.messageBox.value = "";

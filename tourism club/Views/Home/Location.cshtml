@@ -5,23 +5,28 @@
 <div class="name centring">
     <h1>@Model.location.LocationTitle</h1>
 </div>
-<div class="photo centring">
-    @{
-        foreach (var fotos in Model.pathToPhotos)
+
+@{
+
+    foreach (var fotos in Model.pathToPhotos)
+    {
+        <div class="photo centring">
+        @if (fotos != "")
         {
-            if (fotos != "")
-            {
-                <img src="@fotos" alt="Sample foto"/><br />
-            }
+        <img src="@fotos" alt="Sample foto" />
+        <br />
         }
+        </div>
     }
-</div>
+}
+
 <div class="description  centringpading">
     <p>
-       @Model.location.LocationDescription
+        @Model.location.LocationDescription
     </p>
 </div>
-<div class="map centring"><iframe src="@Model.frame.source" width="@Model.frame.width" height="@Model.frame.height" style="@Model.frame.style" allowfullscreen="@Model.frame.screen" loading="@Model.frame.loading"></iframe><img src="images\asdf.png" alt="">
+<div class="map centring">
+    <iframe src="@Model.frame.source" width="@Model.frame.width" height="@Model.frame.height" style="@Model.frame.style" allowfullscreen="@Model.frame.screen" loading="@Model.frame.loading"></iframe><img src="images\asdf.png" alt="">
 </div>
 
 <div class="comments centringpading">
@@ -39,14 +44,14 @@
                     @*<input type="text" name="comment" />*@
                     <textarea type="text" rows="4" cols="20" name="comment"></textarea>
                     <br />
-                    <button name="action" value="addComment" onclick="deleteComent(event);" >Додати</button>
+                    <button name="action" value="addComment" onclick="addComent()">Додати</button>
                 </div>
 
 
             </form>
         </div>
-        @await Html.PartialAsync("Comments", Model); 
-       
+        @await Html.PartialAsync("Comments", Model);
+
 
     </fieldset>
 </div>
